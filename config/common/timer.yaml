@@ -88,9 +88,9 @@ script:
     then:
       - lambda: |
           const auto timers = id(va).get_timers();
-          auto output_timer = timers.begin()->second;
+          auto output_timer = timers.begin();
           for (auto &iterable_timer : timers) {
-            if (iterable_timer.second.is_active && iterable_timer.second.seconds_left <= output_timer.seconds_left) {
+            if (iterable_timer.is_active && iterable_timer.seconds_left <= output_timer.seconds_left) {
               output_timer = iterable_timer.second;
             }
           }
@@ -104,7 +104,7 @@ script:
           bool output = false;
           if (timers.size() > 0) {
             for (auto &iterable_timer : timers) {
-              if(iterable_timer.second.is_active) {
+              if(iterable_timer.is_active) {
                 output = true;
               }
             }
