@@ -88,7 +88,7 @@ script:
     then:
       - lambda: |
           const auto timers = id(va).get_timers();
-          auto output_timer = timers.begin();
+          auto output_timer = *timers.begin();
           for (auto &iterable_timer : timers) {
             if (iterable_timer.is_active && iterable_timer.seconds_left <= output_timer.seconds_left) {
               output_timer = iterable_timer;
