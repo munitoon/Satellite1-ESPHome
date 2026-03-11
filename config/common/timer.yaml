@@ -91,7 +91,7 @@ script:
           auto output_timer = timers.begin();
           for (auto &iterable_timer : timers) {
             if (iterable_timer.is_active && iterable_timer.seconds_left <= output_timer.seconds_left) {
-              output_timer = iterable_timer.second;
+              output_timer = iterable_timer;
             }
           }
           id(first_active_timer) = output_timer;
